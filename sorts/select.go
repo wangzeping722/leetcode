@@ -8,10 +8,10 @@ package sorts
 
 不稳定算法
 
- */
+*/
 
 func Selection(arr []int) {
-	for i := 0; i < len(arr) - 1; i++ {
+	for i := 0; i < len(arr)-1; i++ {
 		min := i
 		for j := i + 1; j < len(arr); j++ {
 			if arr[j] < arr[min] {
@@ -23,9 +23,9 @@ func Selection(arr []int) {
 }
 
 func Selection1(arr []int) {
-	for i:=0; i < len(arr) - 1; i++ {
+	for i := 0; i < len(arr)-1; i++ {
 		min := i
-		for j := i + 1; j < len(arr); j++{
+		for j := i + 1; j < len(arr); j++ {
 			if arr[j] < arr[min] {
 				min = j
 			}
@@ -33,5 +33,3 @@ func Selection1(arr []int) {
 		arr[min], arr[i] = arr[i], arr[min]
 	}
 }
-
-

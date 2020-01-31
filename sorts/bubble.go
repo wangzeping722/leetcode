@@ -38,7 +38,47 @@ func Bubble(arr []int) {
 		}
 
 		if !flag {
-			break
+			return
+		}
+	}
+}
+
+func Bubble1(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
+	for i := len(arr) - 1; i > 0; i-- {
+		flag := true
+		for j := 1; j <= i; j++ {
+			if arr[j] < arr[j-1] {
+				flag = false
+				arr[j], arr[j-1] = arr[j-1], arr[j]
+			}
+		}
+		if flag {
+			return
+		}
+	}
+}
+
+
+func Bubble2(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
+
+	for i := len(arr) - 1; i > 0; i-- {
+		flag := true
+		for j := 1; j <= i; j++ {
+			if arr[j] < arr[j-1] {
+				flag = false
+				arr[j], arr[j-1] = arr[j-1], arr[j]
+			}
+		}
+		if flag {
+			return
 		}
 	}
 }

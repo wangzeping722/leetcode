@@ -11,7 +11,7 @@ func TestSelection(t *testing.T) {
 	array2 := make(sort.IntSlice, len(array1))
 	copy(array2, array1)
 	array2.Sort()
-	Selection(array1)
+	Selection1(array1)
 	fmt.Println(array1)
 	fmt.Println(array2)
 	for i := range array1 {

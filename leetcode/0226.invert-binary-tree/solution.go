@@ -1,0 +1,23 @@
+package problem0226
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func invertTree(root *TreeNode) *TreeNode {
+	invert(root)
+
+	return root
+}
+
+func invert(root *TreeNode) {
+	if root == nil {
+		return
+	}
+
+	invert(root.Left)
+	invert(root.Right)
+	root.Left, root.Right = root.Right, root.Left
+}
