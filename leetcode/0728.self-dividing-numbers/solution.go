@@ -1,0 +1,1 @@
+package _728_self_dividing_numbers
