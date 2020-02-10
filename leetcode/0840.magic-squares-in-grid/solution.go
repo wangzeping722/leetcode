@@ -1,0 +1,1 @@
+package _840_magic_squares_in_grid
