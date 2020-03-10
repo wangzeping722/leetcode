@@ -12,25 +12,56 @@ package sorts
 稳定算法
 */
 
-func Insertion(arr []int) []int {
+//func Insertion(arr []int) []int {
+//	for i := 1; i < len(arr); i++ {
+//		val := arr[i]
+//		j := i - 1
+//		for ; j >= 0 && arr[j] > val; j-- {
+//			arr[j+1] = arr[j]
+//		}
+//		arr[j+1] = val
+//	}
+//	return arr
+//}
+//
+//func Insertion1(arr []int) {
+//	for i := 1; i < len(arr); i++ {
+//		temp := arr[i]
+//		j := i - 1
+//		for ; j >= 0 && arr[j] > temp; j-- {
+//			arr[j+1] = arr[j]
+//		}
+//		arr[j+1] = temp
+//	}
+//}
+
+// 稳定排序
+func Insertion(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
 	for i := 1; i < len(arr); i++ {
-		val := arr[i]
+		tempVal := arr[i]
 		j := i - 1
-		for ; j >= 0 && arr[j] > val; j-- {
+		for ; j >= 0 && arr[j] > tempVal; j-- {
 			arr[j+1] = arr[j]
 		}
-		arr[j+1] = val
+		arr[j+1] = tempVal
 	}
-	return arr
 }
 
-func Insertion1(arr []int) {
+func Insert(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
 	for i := 1; i < len(arr); i++ {
-		temp := arr[i]
+		tempVal := arr[i]
 		j := i - 1
-		for ; j >= 0 && arr[j] > temp; j-- {
+		for ; j >= 0 && arr[j] > tempVal; j-- {
 			arr[j+1] = arr[j]
 		}
-		arr[j+1] = temp
+		arr[j+1] = tempVal
 	}
 }

@@ -7,8 +7,10 @@ func findRadius(houses []int, heaters []int) int {
 	sort.Ints(heaters)
 	res := 0
 	for _, house := range houses {
-		left, right := 0, len(heaters)-1
+		left := 0
+		right := len(heaters) - 1
 		houseRes := 0
+		// 二分查找
 		for left < right {
 			middle := left + (right-left)/2
 			if heaters[middle] < house {
@@ -16,21 +18,21 @@ func findRadius(houses []int, heaters []int) int {
 			} else {
 				right = middle
 			}
-
-			if heaters[left] == house {
-				houseRes = 0
-			} else if heaters[left] < house {
-				houseRes = house - heaters[left]
-			} else { // 供暖器在右侧
-				if left == 0 {
-					houseRes = heaters[left] - house
-				} else {
-					houseRes = getMin(heaters[left] - house, house - heaters[left - 1])
-				}
-			}
-
-			res = getMax(res, houseRes)
 		}
+
+		if heaters[left] == house {
+			houseRes = 0
+		} else if heaters[left] < house { // 供暖器在左侧
+			houseRes = house - heaters[left]
+		} else { // 供暖器在右侧
+			if left == 0 {
+				houseRes = heaters[left] - house
+			} else {
+				houseRes = getMin(heaters[left]-house, house-heaters[left-1])
+			}
+		}
+
+		res = getMax(res, houseRes)
 	}
 
 	return res

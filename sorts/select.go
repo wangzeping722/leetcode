@@ -10,26 +10,59 @@ package sorts
 
 */
 
+//func Selection(arr []int) {
+//	for i := 0; i < len(arr)-1; i++ {
+//		min := i
+//		for j := i + 1; j < len(arr); j++ {
+//			if arr[j] < arr[min] {
+//				min = j
+//			}
+//		}
+//		arr[min], arr[i] = arr[i], arr[min]
+//	}
+//}
+//
+//func Selection1(arr []int) {
+//	for i := 0; i < len(arr)-1; i++ {
+//		min := i
+//		for j := i + 1; j < len(arr); j++ {
+//			if arr[j] < arr[min] {
+//				min = j
+//			}
+//		}
+//		arr[min], arr[i] = arr[i], arr[min]
+//	}
+//}
+
 func Selection(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
 	for i := 0; i < len(arr)-1; i++ {
 		min := i
-		for j := i + 1; j < len(arr); j++ {
+		for j := i+1; j < len(arr); j++ {
 			if arr[j] < arr[min] {
 				min = j
 			}
 		}
-		arr[min], arr[i] = arr[i], arr[min]
+		arr[i], arr[min] = arr[min], arr[i]
 	}
 }
 
-func Selection1(arr []int) {
-	for i := 0; i < len(arr)-1; i++ {
+func Select(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
+	for i:=0; i < len(arr)-1; i++ {
 		min := i
-		for j := i + 1; j < len(arr); j++ {
+		// 找到最小的值
+		for j := i+1; j < len(arr); j++ {
 			if arr[j] < arr[min] {
 				min = j
 			}
 		}
-		arr[min], arr[i] = arr[i], arr[min]
+		arr[i], arr[min] = arr[min], arr[i]
 	}
 }
