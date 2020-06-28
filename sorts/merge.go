@@ -49,14 +49,51 @@ package sorts
 //	}
 //	copy(arr[low:high+1], tempArr[:])
 //}
+//
+//func MergeSort(arr []int) {
+//	if len(arr) <= 1 {
+//		return
+//	}
+//
+//	mid := len(arr) / 2
+//	MergeSort(arr[:mid])
+//	MergeSort(arr[mid:])
+//	merge(arr)
+//}
+//
+//func merge(arr []int) {
+//	length := len(arr)
+//	tempArr := make([]int, length)
+//	left, mid := 0, length/2-1
+//	right := mid+1
+//	i := 0
+//	for left <= mid && right <= length-1 {
+//		if arr[left] <= arr[right] {
+//			tempArr[i] = arr[left]
+//			left++
+//		} else {
+//			tempArr[i] = arr[right]
+//			right++
+//		}
+//		i++
+//	}
+//
+//	if left <= mid {
+//		copy(tempArr[i:], arr[left:mid+1])
+//	}
+//	if right <= length-1 {
+//		copy(tempArr[i:], arr[right:length])
+//	}
+//	copy(arr, tempArr)
+//}
 
 func MergeSort(arr []int) {
-	if len(arr) <= 1 {
+	if len(arr) < 2 {
 		return
 	}
 
 	mid := len(arr) / 2
-	MergeSort(arr[:mid])
+	MergeSort(arr[:mid]) // 这里
 	MergeSort(arr[mid:])
 	merge(arr)
 }
@@ -64,8 +101,8 @@ func MergeSort(arr []int) {
 func merge(arr []int) {
 	length := len(arr)
 	tempArr := make([]int, length)
-	left, mid := 0, length/2-1
-	right := mid+1
+	left, mid := 0, length/2-1 // 这里
+	right := mid + 1
 	i := 0
 	for left <= mid && right <= length-1 {
 		if arr[left] <= arr[right] {
@@ -77,12 +114,22 @@ func merge(arr []int) {
 		}
 		i++
 	}
-
 	if left <= mid {
 		copy(tempArr[i:], arr[left:mid+1])
 	}
 	if right <= length-1 {
-		copy(tempArr[i:], arr[right:length])
+		copy(tempArr[i:], arr[right:])
 	}
 	copy(arr, tempArr)
+}
+
+func mergeSort(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
+	mid := len(arr) / 2
+	mergeSort(arr[:mid])
+	mergeSort(arr[mid:])
+	merge(arr)
 }

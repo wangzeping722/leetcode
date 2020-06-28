@@ -32,12 +32,59 @@ package sorts
 //	QuickSort(arr[tail+1:])
 //}
 
+//func QuickSort(arr []int) {
+//	if len(arr) <= 1 {
+//		return
+//	}
+//
+//	p := arr[0]
+//	left, right := 0, len(arr)-1
+//	for i := 1; i <= right; {
+//		if arr[i] > p {
+//			arr[i], arr[right] = arr[right], arr[i]
+//			right--
+//		} else if arr[i] < p {
+//			arr[i], arr[left] = arr[left], arr[i]
+//			left++
+//			i++
+//		} else {
+//			i++
+//		}
+//	}
+//
+//	QuickSort(arr[:left])
+//	QuickSort(arr[right+1:])
+//}
+//
+//func quickSort(arr []int) {
+//	if len(arr) <= 1 {
+//		return
+//	}
+//	p := arr[0]
+//	left, right := 0, len(arr)-1
+//	for i := 1; i <= right; {
+//		if arr[i] > p {
+//			arr[i], arr[right] = arr[right], arr[i]
+//			right--
+//		} else if arr[i] < p {
+//			arr[i], arr[left] = arr[left], arr[i]
+//			left++
+//			i++
+//		} else {
+//			i++
+//		}
+//	}
+//
+//	quickSort(arr[:left])
+//	quickSort(arr[right+1:])
+//}
+
 func QuickSort(arr []int) {
 	if len(arr) <= 1 {
 		return
 	}
 
-	p := arr[0]
+	p := arr[0] // 选择第一个为基准
 	left, right := 0, len(arr)-1
 	for i := 1; i <= right; {
 		if arr[i] > p {
@@ -51,15 +98,15 @@ func QuickSort(arr []int) {
 			i++
 		}
 	}
-
 	QuickSort(arr[:left])
 	QuickSort(arr[right+1:])
 }
 
-func quickSort(arr []int) {
+func quick(arr []int) {
 	if len(arr) <= 1 {
 		return
 	}
+
 	p := arr[0]
 	left, right := 0, len(arr)-1
 	for i := 1; i <= right; {
@@ -75,6 +122,6 @@ func quickSort(arr []int) {
 		}
 	}
 
-	quickSort(arr[:left])
-	quickSort(arr[right+1:])
+	quick(arr[:left])
+	quick(arr[right+1:])
 }

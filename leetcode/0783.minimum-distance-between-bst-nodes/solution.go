@@ -8,38 +8,61 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-var minInt int
+//var minInt int
+//var preNode *TreeNode
+//
+//func minDiffInBST(root *TreeNode) int {
+//	minInt = math.MaxInt64
+//	preNode = nil
+//	helper(root)
+//	return minInt
+//}
+//
+//func helper(root *TreeNode) {
+//	if root == nil {
+//		return
+//	}
+//	helper(root.Left)
+//	if preNode != nil {
+//		minInt = min(minInt, abs(root.Val, preNode.Val))
+//	}
+//	preNode = root
+//	helper(root.Right)
+//}
+//
+//func min(i, j int) int {
+//	if i < j {
+//		return i
+//	}
+//	return j
+//}
+//
+//func abs(i, j int) int {
+//	if i > j {
+//		return i - j
+//	}
+//	return j - i
+//}
+
 var preNode *TreeNode
 
 func minDiffInBST(root *TreeNode) int {
-	minInt = math.MaxInt64
-	preNode = nil
-	helper(root)
-	return minInt
-}
-
-func helper(root *TreeNode) {
 	if root == nil {
-		return
+		return math.MaxInt64
 	}
-	helper(root.Left)
+
+	minLeft := minDiffInBST(root.Left)
 	if preNode != nil {
-		minInt = min(minInt, abs(root.Val, preNode.Val))
+		minLeft = min(minLeft, root.Val-preNode.Val)
 	}
 	preNode = root
-	helper(root.Right)
+	return min(minLeft, minDiffInBST(root.Right))
 }
 
 func min(i, j int) int {
 	if i < j {
 		return i
 	}
-	return j
-}
 
-func abs(i, j int) int {
-	if i > j {
-		return i - j
-	}
-	return j - i
+	return j
 }

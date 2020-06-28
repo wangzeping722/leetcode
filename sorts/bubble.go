@@ -83,13 +83,31 @@ package sorts
 //	}
 //}
 
-
 func Bubble(arr []int) {
 	if len(arr) <= 1 {
 		return
 	}
 
-	for i := len(arr)-1; i > 0; i-- {
+	for i := len(arr) - 1; i > 0; i-- {
+		flag := true
+		for j := 1; j <= i; j++ {
+			if arr[j] < arr[j-1] {
+				flag = false
+				arr[j], arr[j-1] = arr[j-1], arr[j]
+			}
+		}
+		if flag {
+			return
+		}
+	}
+}
+
+func bubble(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
+	for i := len(arr) - 1; i > 0; i-- {
 		flag := true
 		for j := 1; j <= i; j++ {
 			if arr[j] < arr[j-1] {

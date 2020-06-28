@@ -36,32 +36,62 @@ package sorts
 //}
 
 // 稳定排序
+//func Insertion(arr []int) {
+//	if len(arr) <= 1 {
+//		return
+//	}
+//
+//	for i := 1; i < len(arr); i++ {
+//		tempVal := arr[i]
+//		j := i - 1
+//		for ; j >= 0 && arr[j] > tempVal; j-- {
+//			arr[j+1] = arr[j]
+//		}
+//		arr[j+1] = tempVal
+//	}
+//}
+//
+//func Insert(arr []int) {
+//	if len(arr) <= 1 {
+//		return
+//	}
+//
+//	for i := 1; i < len(arr); i++ {
+//		tempVal := arr[i]
+//		j := i - 1
+//		for ; j >= 0 && arr[j] > tempVal; j-- {
+//			arr[j+1] = arr[j]
+//		}
+//		arr[j+1] = tempVal
+//	}
+//}
+
 func Insertion(arr []int) {
 	if len(arr) <= 1 {
 		return
 	}
 
-	for i := 1; i < len(arr); i++ {
+	for i:=1; i < len(arr); i++ {
 		tempVal := arr[i]
 		j := i - 1
-		for ; j >= 0 && arr[j] > tempVal; j-- {
+		for ; j >= 0 && arr[j+1] > arr[j]; j-- {
 			arr[j+1] = arr[j]
 		}
 		arr[j+1] = tempVal
 	}
 }
 
-func Insert(arr []int) {
+func insertion(arr []int) {
 	if len(arr) <= 1 {
 		return
 	}
 
-	for i := 1; i < len(arr); i++ {
-		tempVal := arr[i]
-		j := i - 1
-		for ; j >= 0 && arr[j] > tempVal; j-- {
+	for i := 1; i< len(arr); i++ {
+		temp := arr[i]
+		j := i-1
+		for ; j >= 0 && arr[j+1] > arr[j]; j-- {
 			arr[j+1] = arr[j]
 		}
-		arr[j+1] = tempVal
+		arr[j+1] = temp
 	}
 }
