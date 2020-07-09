@@ -16,21 +16,22 @@ func generateTrees(n int) []*TreeNode {
 func dfs(start, end int) []*TreeNode {
 	var res []*TreeNode
 	if start > end {
-		res = append(res,nil)
+		res = append(res, nil)
 		return res
 	}
 
-	for i := start; i <= end; i++ {
-		for _, l := range dfs(start, i-1) {
+	for i:= start; i <= end; i++ {
+		for _, l := range dfs(start, i - 1) {
 			for _, r := range dfs(i+1, end) {
 				cur := &TreeNode{
 					Val:   i,
+					Left:  l,
+					Right: r,
 				}
-				cur.Left = l
-				cur.Right = r
 				res = append(res, cur)
 			}
 		}
 	}
+
 	return res
 }
