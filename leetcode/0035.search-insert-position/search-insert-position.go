@@ -2,18 +2,18 @@ package problem0035
 
 // 二分查找
 func searchInsert(nums []int, target int) int {
-	var mid int
-	low, high := 0, len(nums)-1
-	for low <= high {
-		mid = low + (high-low) >> 1
-		if target > nums[mid] {
-			low = mid + 1
-		} else if target < nums[mid] {
-			high = mid -1
-		} else {
+	left := 0
+	right := len(nums)
+	for left < right {
+		mid := left+(right-left)>>1
+		if nums[mid] == target {
 			return mid
+		} else if nums[mid] > target {
+			right = mid
+		} else if nums[mid] < target {
+			left = mid+1
 		}
 	}
-	return low
+	return left
 }
 
