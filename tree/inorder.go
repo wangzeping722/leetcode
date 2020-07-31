@@ -44,10 +44,10 @@ func inorder(root *TreeNode) []int {
 			stack = append(stack, cur)
 			cur = cur.Left
 		}
-		top := stack[len(stack)-1]
+		cur = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		ret = append(ret, top.Val)
-		cur = top.Right
+		ret = append(ret, cur.Val)
+		cur = cur.Right
 	}
 	return ret
 }
