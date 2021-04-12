@@ -29,7 +29,7 @@ func getNextValueArray(sub []byte) (next []int) {
 	j := 0
 	for i := 1; i < len(sub); i++ {
 		for j > 0 && sub[i] != sub[j] {
-			j = next[j-1]	// 回溯
+			j = next[j-1] // 回溯
 		}
 		if sub[i] == sub[j] {
 			j++
@@ -37,4 +37,19 @@ func getNextValueArray(sub []byte) (next []int) {
 		next[i] = j
 	}
 	return
+}
+
+func getNext(b []byte) []int {
+	next := make([]int, len(b))
+	next[0] = -1
+	k := -1
+	for i := 1; i < len(b); i++ {
+		for k != -1 && b[k+1] != b[i] {
+			k = next[k]
+		}
+		if b[k+1] == b[i] {
+			k++
+		}
+		next[i] = k
+	}
 }
